@@ -1,32 +1,31 @@
-# Prerequisites
-*.d
+.DS_Store
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+application/cache/*
+!application/cache/index.html
 
-# Precompiled Headers
-*.gch
-*.pch
+application/logs/*
+!application/logs/index.html
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+!application/*/.htaccess
 
-# Fortran module files
-*.mod
-*.smod
+composer.lock
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+/vendor/
 
-# Executables
-*.exe
-*.out
-*.app
+# IDE Files
+#-------------------------
+/nbproject/
+.idea/*
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+/tests/tests/
+/tests/results/

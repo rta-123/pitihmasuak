@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_swedish_ci">db_datasekolah</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="tb_golongan" view="colnames">
+<left>5</left>
+<top>186</top>
+<width>133</width>
+<height>124</height>
+<sql_create_table>CREATE TABLE `tb_golongan` (
+  `kode_golongan` char(20) NOT NULL,
+  `pangkat` varchar(100) DEFAULT NULL,
+  `golongan` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`kode_golongan`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tb_guru" view="colnames">
+<left>469</left>
+<top>7</top>
+<width>175</width>
+<height>420</height>
+<sql_create_table>CREATE TABLE `tb_guru` (
+  `nip_guru` char(20) NOT NULL,
+  `nama_guru` varchar(100) DEFAULT NULL,
+  `tmp_lahir_guru` varchar(100) DEFAULT NULL,
+  `tgl_lahir_guru` date DEFAULT NULL,
+  `alamat_guru` varchar(100) DEFAULT NULL,
+  `telp_guru` varchar(100) DEFAULT NULL,
+  `jenkel_guru` varchar(100) DEFAULT NULL,
+  `agama_guru` varchar(100) DEFAULT NULL,
+  `status_guru` varchar(100) DEFAULT NULL,
+  `jabatan_guru` varchar(100) DEFAULT NULL,
+  `masa_jabatan_guru` varchar(100) DEFAULT NULL,
+  `ren_pensiun_guru` int(11) DEFAULT NULL,
+  `nip_lama_guru` varchar(100) DEFAULT NULL,
+  `nama_diklat_guru` varchar(100) DEFAULT NULL,
+  `thn_diklat_guru` varchar(100) DEFAULT NULL,
+  `kode_sekolah_guru` char(20) DEFAULT NULL,
+  `kode_jenis_guru` char(20) DEFAULT NULL,
+  `tgl_diangkat_guru` date DEFAULT NULL,
+  `no_sk_guru` varchar(100) DEFAULT NULL,
+  `kode_golongan_guru` char(20) DEFAULT NULL,
+  `kode_pegawai_guru` char(20) DEFAULT NULL,
+  PRIMARY KEY (`nip_guru`),
+  KEY `kode_golongan_guru` (`kode_golongan_guru`),
+  KEY `kode_pegawai_guru` (`kode_pegawai_guru`),
+  KEY `kode_sekolah_guru` (`kode_sekolah_guru`),
+  KEY `kode_jenis_guru` (`kode_jenis_guru`),
+  CONSTRAINT `tb_guru_ibfk_1` FOREIGN KEY (`kode_golongan_guru`) REFERENCES `tb_golongan` (`kode_golongan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tb_guru_ibfk_2` FOREIGN KEY (`kode_pegawai_guru`) REFERENCES `tb_kepegawaian` (`kode_pegawai`),
+  CONSTRAINT `tb_guru_ibfk_3` FOREIGN KEY (`kode_sekolah_guru`) REFERENCES `tb_sekolah` (`kode_sekolah`),
+  CONSTRAINT `tb_guru_ibfk_4` FOREIGN KEY (`kode_jenis_guru`) REFERENCES `tb_jenisguru` (`kode_matapelajaran`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tb_kelurahan" view="colnames">
+<left>9</left>
+<top>12</top>
+<width>127</width>
+<height>124</height>
+<sql_create_table>CREATE TABLE `tb_kelurahan` (
+  `kode_lurah` char(20) NOT NULL,
+  `nama_lurah` varchar(100) DEFAULT NULL,
+  `jumlah_sd` int(11) DEFAULT NULL,
+  PRIMARY KEY (`kode_lurah`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tb_kepegawaian" view="colnames">
+<left>3</left>
+<top>354</top>
+<width>132</width>
+<height>107</height>
+<sql_create_table>CREATE TABLE `tb_kepegawaian` (
+  `kode_pegawai` char(20) NOT NULL,
+  `status_pegawai` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`kode_pegawai`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tb_sekolah" view="colnames">
+<left>250</left>
+<top>5</top>
+<width>161</width>
+<height>212</height>
+<sql_create_table>CREATE TABLE `tb_sekolah` (
+  `kode_sekolah` char(20) NOT NULL,
+  `nama_sekolah` varchar(100) DEFAULT NULL,
+  `alamat_sekolah` varchar(100) DEFAULT NULL,
+  `telp_sekolah` varchar(100) DEFAULT NULL,
+  `jml_guru_honor` int(11) DEFAULT NULL,
+  `jml_guru_pns` int(11) DEFAULT NULL,
+  `jml_siswa_lk` int(11) DEFAULT NULL,
+  `jml_siswa_pr` int(11) DEFAULT NULL,
+  `kode_lurah_sekolah` char(20) DEFAULT NULL,
+  PRIMARY KEY (`kode_sekolah`),
+  KEY `kode_lurah_sekolah` (`kode_lurah_sekolah`),
+  CONSTRAINT `tb_sekolah_ibfk_1` FOREIGN KEY (`kode_lurah_sekolah`) REFERENCES `tb_kelurahan` (`kode_lurah`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tb_pend_guru" view="colnames">
+<left>752</left>
+<top>15</top>
+<width>165</width>
+<height>141</height>
+<sql_create_table>CREATE TABLE `tb_pend_guru` (
+  `nip_pend_guru` char(20) DEFAULT NULL,
+  `instansi_pend_guru` varchar(100) DEFAULT NULL,
+  `prodi_pend_guru` varchar(100) DEFAULT NULL,
+  `thn_lulus_pend_guru` varchar(100) DEFAULT NULL,
+  KEY `nip_pend_guru` (`nip_pend_guru`),
+  CONSTRAINT `tb_pend_guru_ibfk_1` FOREIGN KEY (`nip_pend_guru`) REFERENCES `tb_guru` (`nip_guru`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tb_jenisguru" view="colnames">
+<left>752</left>
+<top>324</top>
+<width>168</width>
+<height>107</height>
+<sql_create_table>CREATE TABLE `tb_jenisguru` (
+  `kode_matapelajaran` char(20) NOT NULL,
+  `nama_matapelajaran` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`kode_matapelajaran`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
