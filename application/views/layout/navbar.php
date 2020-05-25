@@ -105,8 +105,62 @@
 				</li>
 
 				<li class="<?= $urls == "Room" ? "active" : null ?>">
+					<a href="<?= site_url('lappangkat') ?>"><i class="fa fa-file-text"></i>
+							Laporan Data berdasarkan Pangkat
+					</a>
+				</li>
+
+				<li class="<?= $urls == "Room" ? "active" : null ?>">
+					<a href="<?= site_url('lappangkatlurah') ?>"><i class="fa fa-file-text"></i>
+							Laporan Data berdasarkan Pangkat per Kelurahan
+					</a>
+				</li>
+
+				<li class="<?= $urls == "Room" ? "active" : null ?>">
+					<a href="<?= site_url('lappangkatsekolah') ?>"><i class="fa fa-file-text"></i>
+							Laporan Data berdasarkan Pangkat per Sekolah
+					</a>
+				</li>
+
+				<li class="<?= $urls == "Room" ? "active" : null ?>">
+					<a href="<?= site_url('lapberdasarkangol') ?>"><i class="fa fa-file-text"></i>
+							Laporan Data berdasarkan Golongan
+					</a>
+				</li>
+
+				<li class="<?= $urls == "Room" ? "active" : null ?>">
+					<a href="<?= site_url('lapgollurah') ?>"><i class="fa fa-file-text"></i>
+							Laporan Data berdasarkan Golongan per Kelurahan
+					</a>
+				</li>
+
+				<li class="<?= $urls == "Room" ? "active" : null ?>">
+					<a href="<?= site_url('lapgolskl') ?>"><i class="fa fa-file-text"></i>
+							Laporan Data berdasarkan Golongan per Sekolah
+					</a>
+				</li>
+
+				<li class="<?= $urls == "Room" ? "active" : null ?>">
 					<a href="<?= site_url('lappegawai') ?>"><i class="fa fa-file-text"></i>
-							Laporan Data Status Kepegawaian
+							Laporan Data Kepegawaian
+					</a>
+				</li>
+
+				<li class="<?= $urls == "Room" ? "active" : null ?>">
+					<a href="<?= site_url('lapstatuspegawai') ?>"><i class="fa fa-file-text"></i>
+							Laporan Data berdasarkan Status Kepegawaian
+					</a>
+				</li>
+
+				<li class="<?= $urls == "Room" ? "active" : null ?>">
+					<a href="<?= site_url('lapstatuspegawaiskl') ?>"><i class="fa fa-file-text"></i>
+							Laporan Data berdasarkan Status Kepegawaian per Sekolah
+					</a>
+				</li>
+
+				<li class="<?= $urls == "Room" ? "active" : null ?>">
+					<a href="<?= site_url('lapstatuspegawailurah') ?>"><i class="fa fa-file-text"></i>
+							Laporan Data berdasarkan Status Kepegawaian per Kelurahan
 					</a>
 				</li>
 			</ul>

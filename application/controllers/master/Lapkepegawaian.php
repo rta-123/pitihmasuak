@@ -11,10 +11,10 @@ class Lapkepegawaian extends CI_Controller
 	public function index()
 	{
 		$data = [
-			'title' => 'Laporan Data Status Kepegawaian',
-			'page'  => 'Laporan Data Status Kepegawaian',
-			'small' => 'List Laporan Data Status Kepegawaian',
-			'urls'  => '<li class="active">Laporan Data Status Kepegawaian</li>',
+			'title' => 'Laporan Data Kepegawaian',
+			'page'  => 'Laporan Data Kepegawaian',
+			'small' => 'List Laporan Data Kepegawaian',
+			'urls'  => '<li class="active">Laporan Data Kepegawaian</li>',
 			'data'  => $this->Mlappegawai->tampildata()
 		];
 		$this->template->display('master/lappegawai/index', $data);//panggil dari view

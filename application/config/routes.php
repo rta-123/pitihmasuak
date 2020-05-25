@@ -23,5 +23,14 @@ $route['lappegawai'] = 'master/Lapkepegawaian';
 $route['lapsklkelurahan'] = 'master/Lapsekolahkelurahan';
 $route['lapgrsekolah'] = 'master/Lapgurusekolah';
 $route['lapgrkelurahan'] = 'master/Lapgurukelurahan';
+$route['lappangkat'] = 'master/Lappangkat';
+$route['lapberdasarkangol'] = 'master/Lapberdasarkangol';
+$route['lappangkatsekolah'] = 'master/Lappangkatsekolah';
+$route['lappangkatlurah'] = 'master/Lappangkatlurah';
+$route['lapgollurah'] = 'master/Lapgollurah';
+$route['lapgolskl'] = 'master/Lapgolskl';
+$route['lapstatuspegawai'] = 'master/Lapstatuspegawai';
+$route['lapstatuspegawaiskl'] = 'master/Lapstatuspegawaiskl';
+$route['lapstatuspegawailurah'] = 'master/Lapstatuspegawailurah';
 
 

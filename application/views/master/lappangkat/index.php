@@ -2,12 +2,30 @@
 	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header with-border">
-				<a href="<?= site_url('master/Lapkepegawaian/cetak') ?>" class="btn bg-aqua"><i class="fa fa-print">Cetak Laporan</i></a>
+				<a href="<?= site_url('master/Lappangkat/cetak') ?>" class="btn bg-aqua"><i class="fa fa-print">Cetak Laporan</i></a>
 				<a href="<?= site_url('Home') ?>" class="btn bg-yellow"><i class="fa fa-backward">Kembali</i></a>
 
-				<center><h2><b>Laporan Data Kepegawaian</b></h2></center>
+				<center><h2><b>Laporan Data berdasarkan Pangkat</b></h2></center>
 				<center><h4><b>Kecamatan Padang Timur</b></h4></center>
 				<center><h4><b>Kota Padang</b></h4></center>
+				<hr>
+					<div class="col-lg-1 col-xs-6">
+						<div style="height: 7px"></div>
+    					<div class="form-group">
+							<label>Pangkat</label>
+						</div>	
+					</div>
+					<div class="col-lg-3 col-xs-6">
+    					<div class="form-group">
+							<select class="form-control" name="pangkat">
+						<option value="">-- Pilih Pangkat --</option>
+						<?php foreach ($dgolongan as $d) : ?>
+							<option value="<?= $d['kode_golongan']; ?>"><?=$d['pangkat']; ?></option>
+						<?php endforeach; ?>
+					</select>
+						</div>
+					</div>
+				</hr>
 			</div>
 			<div class="box-body table-responsive">
 				<?= $this->session->flashdata('pesan'); ?>
@@ -17,10 +35,9 @@
 							<th class="text-center">No.</th>
 							<th>NIP Guru</th>
 							<th>Nama Guru</th>
-							<th>Kode Kepegawaian</th>
-							<th>Status Kepegawaian</th>
-							<th>Tanggal Diangkat</th>
-							<th>No SK</th>
+							<th>Kode Golongan</th>
+							<th>Pangkat</th>
+							<th>Golongan</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -30,10 +47,9 @@
 								<td class="text-center" width="40px"><?= $no . '.'; ?></td>
 								<td><?= $d['nip_guru'] ?></td>
 								<td><?= $d['nama_guru'] ?></td>
-								<td><?= $d['kode_pegawai'] ?></td>
-								<td><?= $d['status_pegawai'] ?></td>
-								<td><?= $d['tgl_diangkat_guru'] ?></td>
-								<td><?= $d['no_sk_guru'] ?></td>
+								<td><?= $d['kode_golongan'] ?></td>
+								<td><?= $d['pangkat'] ?></td>
+								<td><?= $d['golongan'] ?></td>
 								
 									
 								</td>
@@ -43,7 +59,6 @@
 						
 					</tbody>
 					<tfoot>
-						
 					</tfoot>
 				</table>
 			</div>
