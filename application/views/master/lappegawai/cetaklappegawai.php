@@ -12,7 +12,7 @@
  </style>
 </head>
 <body onload="window.print()">
-	<h1 align="center">Laporan Data Status Kepegawaian
+	<h1 align="center">Laporan Data Kepegawaian
 		 <br>Kecamatan Padang Timur</h1>
 	<h3 align="center">Kota Padang</h3>
 <table align="center" width="60%" border="1">
