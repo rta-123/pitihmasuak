@@ -2,7 +2,7 @@
 	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header with-border">
-				<a href="<?= site_url('master/Lapsekolahkelurahan/cetak') ?>" class="btn bg-aqua"><i class="fa fa-print">Cetak Laporan</i></a>
+				<a href="#" class="btn bg-aqua cetak"><i class="fa fa-print">Cetak Laporan</i></a>
 				<a href="<?= site_url('Home') ?>" class="btn bg-yellow"><i class="fa fa-backward">Kembali</i></a>
 
 				<center><h2><b>Laporan Data Sekolah per Kelurahan</b></h2></center>
@@ -21,7 +21,7 @@
 					</div>
 					<div class="col-lg-3 col-xs-6">
     					<div class="form-group">
-							<select class="form-control" name="kodelurah">
+							<select class="form-control kodelurah" name="kodelurah">
 						<option value="">-- Pilih Kelurahan --</option>
 						<?php foreach ($dlurah as $d) : ?>
 							<option value="<?= $d['kode_lurah']; ?>"><?= $d['kode_lurah']."-". $d['nama_lurah']; ?></option>
@@ -31,7 +31,7 @@
 							<span class="error kodelurah text-red"></span>
 						</div>
 						<div class="form-group">
-							<select class="form-control" name="kodsekolah">
+							<select class="form-control kodsekolah" name="kodsekolah">
 						<option value="">-- Pilih Sekolah --</option>
 						<?php foreach ($dsekolah as $d) : ?>
 							<option value="<?= $d['kode_sekolah']; ?>"><?= $d['kode_sekolah']."-". $d['nama_sekolah']; ?></option>
@@ -44,69 +44,7 @@
 			</div>
 			<div class="box-body table-responsive">
 				<?= $this->session->flashdata('pesan'); ?>
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th class="text-center">No.</th>
-							<th>Kode Sekolah</th>
-							<th>Nama Sekolah</th>
-							<th>Alamat Sekolah</th>
-							<th>No Telpon</th>
-							<th>Jumlah Guru Honor</th>
-							<th>Jumlah Guru PNS</th>
-							<th>Jumlah Siswa Laki-Laki</th>
-							<th>Jumlah Siswi Perempuan</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php $no = 1;
-						$tothonor=0;
-						$totpns=0;
-						$totlk=0;
-						$totpr=0;
-						foreach ($data as $d) { ?>
-							<tr>
-								<td class="text-center" width="40px"><?= $no . '.'; ?></td>
-								<td><?= $d['kode_sekolah'] ?></td>
-								<td><?= $d['nama_sekolah'] ?></td>
-								<td><?= $d['alamat_sekolah'] ?></td>
-								<td><?= $d['telp_sekolah'] ?></td>
-								<td><?= $d['jml_guru_honor'] ?></td>
-								<td><?= $d['jml_guru_pns'] ?></td>
-								<td><?= $d['jml_siswa_lk'] ?></td>
-								<td><?= $d['jml_siswa_pr'] ?></td>
-								
-									
-								</td>
-							</tr>
-						<?php $no++;
-						$tothonor=$tothonor+$d['jml_guru_honor'];
-						$totpns=$totpns+$d['jml_guru_pns'];
-						$totlk=$totlk+$d['jml_siswa_lk'];
-						$totpr=$totpr+$d['jml_siswa_pr'];
-						} ?>
-						
-					</tbody>
-					<tfoot>
-						<th>
-							<td colspan="4" align="center">
-								<b>Total</b> 
-							</td>	
-							<td>
-								<b><?=  $tothonor ?></b>
-							</td>
-							<td>
-								<b><?=  $totpns ?></b>
-							</td>
-							<td>
-								<b><?=  $totlk ?></b>
-							</td>
-							<td>
-								<b><?=  $totpr ?></b>
-							</td>
-						</th>
-					</tfoot>
-				</table>
+				<div  class="tampil_tabel">cssc</div>
 			</div>
 		</div>
 	</div>
@@ -114,3 +52,55 @@
 
 <div id="tampil_modal"></div>
 
+<script type="text/javascript">
+	$(document).ready( function(e) {
+	$.ajax({
+                    url: '<?= site_url('master/Lapsekolahkelurahan/tabel')  ?>',
+                    type: "post",
+                    cache: false,
+                    success: function(response) {
+                    	$('.tampil_tabel').html(response);
+                    	// alert("Bisa");
+                    }
+                });
+ 	$(document).on('change', '.kodelurah', function(e) {
+ 		let kode= "&sekolah=" +$(this).val()+"&lurah=" +$('.kodelurah').val();
+	          $.ajax({
+                    url: '<?= site_url('master/Lapsekolahkelurahan/tabel_kode')  ?>',
+                    type: "post",
+                    data: kode,
+                    cache: false,
+                    success: function(response) {
+                    			alert("Kode Sekolah harus dipilih !");
+                    	$('.tampil_tabel').html('');
+                    	$('.tampil_tabel').html(response);
+                    }
+                });
+
+	});
+	   	$(document).on('change', '.kodsekolah', function(e) {
+	   		let kode= "&sekolah=" +$(this).val()+"&lurah=" +$('.kodelurah').val();
+	          $.ajax({
+                    url: '<?= site_url('master/Lapsekolahkelurahan/tabel_kode')  ?>',
+                    type: "post",
+                    data: kode,
+                    cache: false,
+                    success: function(response) {
+                    	$('.tampil_tabel').html('');
+                    	$('.tampil_tabel').html(response);
+                    }
+                });
+
+	});
+	   		$(document).on('click', '.cetak', function(e) {
+                        
+
+	   		let kode= "/" +$('.kodsekolah').val()+"/" +$('.kodelurah').val();
+                    	    setTimeout(function() {
+                                window.location.href = '<?= site_url('master/Lapsekolahkelurahan/cetak')?>'+kode;
+                            }, 100);
+
+	});
+	});
+
+</script>

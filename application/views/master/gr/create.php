@@ -102,16 +102,16 @@
 								<input type="text" name="masajabatan" class="form-control">
 								<span class="error masajabatan text-red"></span>
 							</div>
-							<div class="form-group">
+<!-- 							<div class="form-group">
 								<label>Ren Pensiun</label>
 								<input type="text" name="renpensiun" class="form-control">
 								<span class="error renpensiun text-red"></span>
-							</div>
-							<div class="form-group">
+							</div> -->
+<!-- 							<div class="form-group">
 								<label>NIP Lama</label>
 								<input type="text" name="niplama" class="form-control">
 								<span class="error niplama text-red"></span>
-							</div>
+							</div> -->
 							<div class="form-group">
 								<label>Nama Diklat</label>
 								<input type="text" name="namadiklat" class="form-control">
@@ -146,11 +146,11 @@
 					</select>
 					<span class="error kodejenisguru text-red"></span>
 				</div>
-				<div class="form-group">
+<!-- 				<div class="form-group">
 					<label>Tanggal Diangkat</label>
 					<input type="date" name="tgldiangkat" class="form-control">
 					<span class="error tgldiangkat text-red"></span>
-				</div>
+				</div> -->
 				<div class="form-group">
 					<label>No SK</label>
 					<input type="text" name="nosk" class="form-control">
