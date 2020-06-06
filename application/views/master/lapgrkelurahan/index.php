@@ -21,7 +21,7 @@
 					</div>
 					<div class="col-lg-3 col-xs-6">
     					<div class="form-group">
-							<select class="form-control" name="kodelurah">
+							<select class="form-control kodelurah" name="kodelurah">
 						<option value="">-- Pilih Kode Kelurahan --</option>
 						<?php foreach ($dlurah as $d) : ?>
 							<option value="<?= $d['kode_lurah']; ?>"><?=$d['kode_lurah']; ?></option>
@@ -31,10 +31,10 @@
 							<span class="error kodelurah text-red"></span>
 						</div>
 						<div class="form-group">
-							<select class="form-control" name="namalurah">
+							<select class="form-control namalurah" name="namalurah">
 						<option value="">-- Pilih Nama Kelurahan --</option>
 						<?php foreach ($dlurah as $d) : ?>
-							<option value="<?= $d['kode_lurah']; ?>"><?= $d['nama_lurah']; ?></option>
+							<option value="<?= $d['nama_lurah']; ?>"><?= $d['nama_lurah']; ?></option>
 						<?php endforeach; ?>
 					</select>
 							<span class="error namalurah text-red"></span>
@@ -44,46 +44,8 @@
 			</div>
 			<div class="box-body table-responsive">
 				<?= $this->session->flashdata('pesan'); ?>
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th class="text-center">No.</th>
-							<th>Kode Sekolah</th>
-							<th>Nama Sekolah</th>
-							<th>NIP Guru</th>
-							<th>Nama Guru</th>
-							<th>Alamat</th>
-							<th>Tempat Lahir</th>
-							<th>Tanggal Lahir</th>
-							<th>No Telpon</th>
-							<th>Jenis Kelamin</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php $no = 1;
-						foreach ($data as $d) { ?>
-							<tr>
-								<td class="text-center" width="40px"><?= $no . '.'; ?></td>
-								<td><?= $d['kode_sekolah'] ?></td>
-								<td><?= $d['nama_sekolah'] ?></td>
-								<td><?= $d['nip_guru'] ?></td>
-								<td><?= $d['nama_guru'] ?></td>
-								<td><?= $d['alamat_guru'] ?></td>
-								<td><?= $d['tmp_lahir_guru'] ?></td>
-								<td><?= $d['tgl_lahir_guru'] ?></td>
-								<td><?= $d['telp_guru'] ?></td>
-								<td><?= $d['jenkel_guru'] ?></td>
-								
-									
-								</td>
-							</tr>
-						<?php $no++;
-						} ?>
-						
-					</tbody>
-					<tfoot>
-					</tfoot>
-				</table>
+				<div  class="tampil_tabel">cssc</div>
+
 			</div>
 		</div>
 	</div>
@@ -91,3 +53,56 @@
 
 <div id="tampil_modal"></div>
 
+
+<script type="text/javascript">
+	$(document).ready( function(e) {
+	$.ajax({
+                    url: '<?= site_url('master/Lapgurukelurahan/tabel')  ?>',
+                    type: "post",
+                    cache: false,
+                    success: function(response) {
+                    	$('.tampil_tabel').html(response);
+                    	// alert("Bisa");
+                    }
+                });
+ 	$(document).on('change', '.namalurah', function(e) {
+ 		let kode= "&a=" +$('.kodelurah').val()+"&b=" +$('.namalurah').val();
+
+	          $.ajax({
+                    url: '<?= site_url('master/Lapgurukelurahan/tabel_kode')  ?>',
+                    type: "post",
+                    data: kode,
+                    cache: false,
+                    success: function(response) {
+                    	$('.tampil_tabel').html('');
+                    	$('.tampil_tabel').html(response);
+                    }
+                });
+
+	});
+	   	$(document).on('change', '.kodelurah', function(e) {
+ 		let kode= "&a=" +$('.kodelurah').val()+"&b=" +$('.namalurah').val();
+	          $.ajax({
+                    url: '<?= site_url('master/Lapgurukelurahan/tabel_kode')  ?>',
+                    type: "post",
+                    data: kode,
+                    cache: false,
+                    success: function(response) {
+                    			alert("Kode Sekolah harus dipilih !");
+                    	
+                    	$('.tampil_tabel').html('');
+                    	$('.tampil_tabel').html(response);
+                    }
+                });
+
+	});
+	   		$(document).on('click', '.cetak', function(e) {
+ 		let kode= "/" +$('.kodesekolah').val()+"/=" +$('.namasekolah').val();
+                    	    setTimeout(function() {
+                                window.location.href = '<?= site_url('master/Lapgurukelurahan/cetak')?>'+kode;
+                            }, 100);
+
+	});
+	});
+
+</script>

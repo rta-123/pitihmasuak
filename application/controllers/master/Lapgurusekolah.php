@@ -22,6 +22,26 @@ class Lapgurusekolah extends CI_Controller
 		];
 		$this->template->display('master/lapgrsekolah/index', $data);//panggil dari view
 	}
+		public function tabel()
+	{
+		
+		$data=[
+			'data'  => $this->Mlapgurusekolah->tampildata(),
+			'dsekolah'=>$this->Msekolah->getall()
+		];
+		$this->load->view('master/lapgrsekolah/tabel', $data);
+		
+	}
+	public function tabel_kode()
+	{
+		$a = $this->input->post('a');
+		$b = $this->input->post('b');
+		$data=[
+			'data'  => $this->Mlapgurusekolah->tampildata_kode($a,$b),
+			'dsekolah'=>$this->Msekolah->getall()
+		];
+		$this->load->view('master/lapgrsekolah/tabel', $data);
+	}
 
 	public function cetak()
 	{

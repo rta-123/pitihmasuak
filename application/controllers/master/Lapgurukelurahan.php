@@ -12,6 +12,7 @@ class Lapgurukelurahan extends CI_Controller
 	public function index()
 	{
 		
+
 		$data = [
 			'title' => 'Laporan Data Guru per Kelurahan',
 			'page'  => 'Laporan Data Guru per Kelurahan',
@@ -22,7 +23,26 @@ class Lapgurukelurahan extends CI_Controller
 		];
 		$this->template->display('master/lapgrkelurahan/index', $data);//panggil dari view
 	}
-
+	public function tabel_kode()
+	{
+		$a = $this->input->post('a');
+		$b = $this->input->post('b');
+		$data=[
+			'data'  => $this->Mlapgurukelurahan->tampildata_kode($a,$b),
+			'dlurah'=>$this->Mkelurahan->getall()
+		];
+		$this->load->view('master/lapgrkelurahan/tabel', $data);
+	}
+		public function tabel()
+	{
+		
+		$data=[
+			'data'  => $this->Mlapgurukelurahan->tampildata(),
+			'dlurah'=>$this->Mkelurahan->getall()
+		];
+		$this->load->view('master/lapgrkelurahan/tabel', $data);
+		
+	}
 	public function cetak()
 	{
 		$data = [
