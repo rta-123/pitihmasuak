@@ -29,7 +29,7 @@ class Lapstatuspegawai extends CI_Controller
 			'data'  => $this->Mlapstatuspegawai->tampildata()
 			
 		];
-		$this->load->view('master/lapstatuspegawai/cetaklapstatuspegawai',$data);
+		$this->load->view('master/lapstatuspegawai/cetak',$data);
 
 	}
 	

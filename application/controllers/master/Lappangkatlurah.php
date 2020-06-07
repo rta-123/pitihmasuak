@@ -31,7 +31,7 @@ class Lappangkatlurah extends CI_Controller
 			'data'  => $this->Mlappangkatlurah->tampildata()
 			
 		];
-		$this->load->view('master/Lappangkatlurah/cetaklappangkatlurah',$data);
+		$this->load->view('master/Lappangkatlurah/cetak',$data);
 
 	}
 	

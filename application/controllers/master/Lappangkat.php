@@ -29,7 +29,7 @@ class Lappangkat extends CI_Controller
 			'data'  => $this->Mlappangkat->tampildata()
 			
 		];
-		$this->load->view('master/lappangkat/cetaklappangkat',$data);
+		$this->load->view('master/lappangkat/cetak',$data);
 
 	}
 	

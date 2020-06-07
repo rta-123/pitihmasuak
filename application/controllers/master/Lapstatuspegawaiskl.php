@@ -31,7 +31,7 @@ class Lapstatuspegawaiskl extends CI_Controller
 			'data'  => $this->Mlapstatuspegawaiskl->tampildata()
 			
 		];
-		$this->load->view('master/lapstatuspegawaiskl/cetaklapstatuspegawaiskl',$data);
+		$this->load->view('master/lapstatuspegawaiskl/cetak',$data);
 
 	}
 	

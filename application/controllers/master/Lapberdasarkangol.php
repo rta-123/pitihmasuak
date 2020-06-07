@@ -29,7 +29,7 @@ class Lapberdasarkangol extends CI_Controller
 			'data'  => $this->Mlapberdasarkangol->tampildata()
 			
 		];
-		$this->load->view('master/lapberdasarkangol/cetaklapberdasarkangol',$data);
+		$this->load->view('master/lapberdasarkangol/cetak',$data);
 
 	}
 	

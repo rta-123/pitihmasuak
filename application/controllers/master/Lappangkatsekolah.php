@@ -31,7 +31,7 @@ class Lappangkatsekolah extends CI_Controller
 			'data'  => $this->Mlappangkatsekolah->tampildata()
 			
 		];
-		$this->load->view('master/lappangkatsekolah/cetaklappangkatsekolah',$data);
+		$this->load->view('master/lappangkatsekolah/cetak',$data);
 
 	}
 	

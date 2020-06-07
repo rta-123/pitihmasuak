@@ -49,7 +49,7 @@ class Lapgurusekolah extends CI_Controller
 			'data'  => $this->Mlapgurusekolah->tampildata()
 			
 		];
-		$this->load->view('master/lapgrsekolah/cetakgrsekolah',$data);
+		$this->load->view('master/lapgrsekolah/cetak',$data);
 
 	}
 	

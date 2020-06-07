@@ -31,7 +31,7 @@ class Lapgolskl extends CI_Controller
 			'data'  => $this->Mlapgolskl->tampildata()
 			
 		];
-		$this->load->view('master/Lapgolskl/cetaklapgolskl',$data);
+		$this->load->view('master/Lapgolskl/cetak',$data);
 
 	}
 	

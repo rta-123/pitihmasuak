@@ -31,7 +31,7 @@ class Lapgollurah extends CI_Controller
 			'data'  => $this->Mlapgollurah->tampildata()
 			
 		];
-		$this->load->view('master/Lapgollurah/cetaklapgollurah',$data);
+		$this->load->view('master/Lapgollurah/cetak',$data);
 
 	}
 	

@@ -49,7 +49,7 @@ class Lapgurukelurahan extends CI_Controller
 			'data'  => $this->Mlapgurukelurahan->tampildata()
 			
 		];
-		$this->load->view('master/lapgrkelurahan/cetakgrkelurahan',$data);
+		$this->load->view('master/lapgrkelurahan/cetak',$data);
 
 	}
 	
