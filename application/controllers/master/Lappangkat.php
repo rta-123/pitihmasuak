@@ -23,10 +23,30 @@ class Lappangkat extends CI_Controller
 		$this->template->display('master/lappangkat/index', $data);//panggil dari view
 	}
 
+public function tabel()
+	{
+		
+		$data=[
+			'data'  => $this->Mlappangkat->tampildata(),
+			'dgolongan'=>$this->Mgolongan->getall()
+		];
+		$this->load->view('master/lappangkat/tabel', $data);
+		
+	}
+		public function tabel_kode()
+	{
+		$a = $this->input->post('a');
+		$data=[
+			'data'  => $this->Mlappangkat->tampildata_kode($a),
+			'dgolongan'=>$this->Mgolongan->getall()
+		];
+		$this->load->view('master/lappangkat/tabel', $data);
+	}
 	public function cetak()
 	{
+		$a = $this->uri->segment(4);
 		$data = [
-			'data'  => $this->Mlappangkat->tampildata()
+			'data'  => $this->Mlappangkat->tampildata_kode($a)
 			
 		];
 		$this->load->view('master/lappangkat/cetak',$data);

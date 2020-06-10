@@ -19,15 +19,16 @@
 	<thead>
 		<tr>
 			<th  width="5%">No.</th>
-			<th width="15%">Kode Sekolah</th>
-			<th width="20%">Nama Sekolah</th>
 			<th width="20%">NIP Guru</th>
 			<th width="20%">Nama Guru</th>
 			<th width="20%">Alamat Guru</th>
 			<th width="15%">Tempat Lahir</th>
 			<th width="15%">Tanggal Lahir</th>
 			<th width="15%">No Telpon</th>
-			<th width="10%">Jenis Kelamin</th>
+			<th width="15%">Jenis Kelamin</th>
+			<th width="20%">Status Kepegawaian</th>
+			<th width="20%">Jenis Guru</th>
+			<th width="20%">Jabatan</th>
 			
 			
 		</tr>
@@ -36,9 +37,7 @@
 						<?php $no = 1;
 						foreach ($data as $d) { ?>
 							<tr>
-								<td width="40px"><?= $no . '.'; ?></td>
-								<td><?= $d['kode_sekolah'] ?></td>
-								<td><?= $d['nama_sekolah'] ?></td>
+								<td class="text-center" width="40px"><?= $no . '.'; ?></td>
 								<td><?= $d['nip_guru'] ?></td>
 								<td><?= $d['nama_guru'] ?></td>
 								<td><?= $d['alamat_guru'] ?></td>
@@ -46,7 +45,9 @@
 								<td><?= $d['tgl_lahir_guru'] ?></td>
 								<td><?= $d['telp_guru'] ?></td>
 								<td><?= $d['jenkel_guru'] ?></td>
-								
+								<td><?= $d['status_pegawai'] ?></td>
+								<td><?= $d['nama_matapelajaran'] ?></td>
+								<td><?= $d['jabatan_guru'] ?></td>
 									
 								</td>
 							</tr>

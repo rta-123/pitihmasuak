@@ -2,7 +2,7 @@
 	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header with-border">
-				<a href="<?= site_url('master/Lapgurukelurahan/cetak') ?>" class="btn bg-aqua"><i class="fa fa-print">Cetak Laporan</i></a>
+				<a href="#" class="btn bg-aqua cetak"><i class="fa fa-print">Cetak Laporan</i></a>
 				<a href="<?= site_url('Home') ?>" class="btn bg-yellow"><i class="fa fa-backward">Kembali</i></a>
 
 				<center><h2><b>Laporan Data Guru per Kelurahan</b></h2></center>
@@ -15,22 +15,22 @@
 							<label>Kode Kelurahan</label>
 						</div>
 						<div style="height: 7px"></div>
-    					<div class="form-group">
+<!--     					<div class="form-group">
 							<label>Nama Kelurahan</label>
-						</div>	
+						</div> -->	
 					</div>
 					<div class="col-lg-3 col-xs-6">
     					<div class="form-group">
 							<select class="form-control kodelurah" name="kodelurah">
 						<option value="">-- Pilih Kode Kelurahan --</option>
 						<?php foreach ($dlurah as $d) : ?>
-							<option value="<?= $d['kode_lurah']; ?>"><?=$d['kode_lurah']; ?></option>
+							<option value="<?= $d['kode_lurah']; ?>"><?=$d['kode_lurah']; ?>-<?= $d['nama_lurah']; ?></option>
 						<?php endforeach; ?>
 					</select>
 					
 							<span class="error kodelurah text-red"></span>
 						</div>
-						<div class="form-group">
+<!-- 						<div class="form-group">
 							<select class="form-control namalurah" name="namalurah">
 						<option value="">-- Pilih Nama Kelurahan --</option>
 						<?php foreach ($dlurah as $d) : ?>
@@ -38,7 +38,7 @@
 						<?php endforeach; ?>
 					</select>
 							<span class="error namalurah text-red"></span>
-						</div>
+						</div> -->
 					</div>
 				</hr>
 			</div>
@@ -88,7 +88,7 @@
                     data: kode,
                     cache: false,
                     success: function(response) {
-                    			alert("Kode Sekolah harus dipilih !");
+                    			// alert("Kode Sekolah harus dipilih !");
                     	
                     	$('.tampil_tabel').html('');
                     	$('.tampil_tabel').html(response);
@@ -97,7 +97,7 @@
 
 	});
 	   		$(document).on('click', '.cetak', function(e) {
- 		let kode= "/" +$('.kodesekolah').val()+"/=" +$('.namasekolah').val();
+ 		let kode= "/" +$('.kodelurah').val();
                     	    setTimeout(function() {
                                 window.location.href = '<?= site_url('master/Lapgurukelurahan/cetak')?>'+kode;
                             }, 100);

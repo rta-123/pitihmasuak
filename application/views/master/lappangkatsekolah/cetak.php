@@ -12,7 +12,7 @@
  </style>
 </head>
 <body onload="window.print()">
-	<h1 align="center">Laporan Data berdasarkan Pangkat per Sekolah
+	<h1 align="center">Laporan Data Guru berdasarkan Pangkat per Sekolah
 		 <br>Kecamatan Padang Timur</h1>
 	<h3 align="center">Kota Padang</h3>
 <table align="center" width="60%" border="1">

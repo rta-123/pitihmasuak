@@ -45,8 +45,9 @@ class Lapgurusekolah extends CI_Controller
 
 	public function cetak()
 	{
+		$a = $this->uri->segment(4);
 		$data = [
-			'data'  => $this->Mlapgurusekolah->tampildata()
+			'data'  => $this->Mlapgurusekolah->tampildata_kode($a,'')
 			
 		];
 		$this->load->view('master/lapgrsekolah/cetak',$data);

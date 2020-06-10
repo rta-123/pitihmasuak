@@ -13,7 +13,7 @@ class Lapguru extends CI_Controller
 	{
 		$data = [
 			'title' => 'Laporan Data Guru',
-			'page'  => 'Laporan Data Guruu',
+			'page'  => 'Laporan Data Guru',
 			'small' => 'List Laporan Data Guru',
 			'urls'  => '<li class="active">Laporan Data Guru</li>',
 			'data'  => $this->Mlapguru->tampildata()

@@ -44,12 +44,16 @@ class Lapgurukelurahan extends CI_Controller
 		
 	}
 	public function cetak()
+
 	{
+
+
+		$a = $this->uri->segment(4);
 		$data = [
-			'data'  => $this->Mlapgurukelurahan->tampildata()
+			'data'  => $this->Mlapgurukelurahan->tampildata_kode($a,'')
 			
 		];
-		$this->load->view('master/lapgrkelurahan/cetak',$data);
+	$this->load->view('master/lapgrkelurahan/cetak', $data);
 
 	}
 	

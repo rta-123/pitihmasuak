@@ -21,9 +21,8 @@
 			<th  width="5%">No.</th>
 			<th width="20%">NIP Guru</th>
 			<th width="20%">Nama Guru</th>
-			<th width="15%">Kode Golongan</th>
-			<th width="12%">Pangkat</th>
-			<th width="12%">Golongan</th>
+	<!-- 		<th width="12%">Pangkat</th>
+			<th width="12%">Golongan</th> -->
 
 
 			
@@ -38,9 +37,9 @@
 								<td width="40px"><?= $no . '.'; ?></td>
 								<td><?= $d['nip_guru'] ?></td>
 								<td><?= $d['nama_guru'] ?></td>
-								<td><?= $d['kode_golongan'] ?></td>
-								<td><?= $d['pangkat'] ?></td>
-								<td><?= $d['golongan'] ?></td>
+								<!-- <td><?= $d['kode_golongan'] ?></td> -->
+								<!-- <td><?= $d['pangkat'] ?></td> -->
+								<!-- <td><?= $d['golongan'] ?></td> -->
 								
 									
 								</td>

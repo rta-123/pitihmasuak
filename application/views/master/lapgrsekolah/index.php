@@ -2,7 +2,7 @@
 	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header with-border">
-				<a href="<?= site_url('master/Lapgurusekolah/cetak') ?>" class="btn bg-aqua"><i class="fa fa-print">Cetak Laporan</i></a>
+				<a href="#" class="btn bg-aqua cetak"><i class="fa fa-print">Cetak Laporan</i></a>
 				<a href="<?= site_url('Home') ?>" class="btn bg-yellow"><i class="fa fa-backward">Kembali</i></a>
 
 				<center><h2><b>Laporan Data Guru per Sekolah</b></h2></center>
@@ -15,22 +15,22 @@
 							<label>Kode Sekolah</label>
 						</div>
 						<div style="height: 7px"></div>
-    					<div class="form-group">
+<!--     					<div class="form-group">
 							<label>Nama Sekolah</label>
-						</div>	
+						</div>	 -->
 					</div>
 					<div class="col-lg-3 col-xs-6">
     					<div class="form-group">
 							<select class="form-control kodesekolah" name="kodesekolah">
 						<option value="">-- Pilih Kode Sekolah --</option>
 						<?php foreach ($dsekolah as $d) : ?>
-							<option value="<?= $d['kode_sekolah']; ?>"><?=$d['kode_sekolah']; ?></option>
+							<option value="<?= $d['kode_sekolah']; ?>"><?= $d['kode_sekolah']; ?>-<?= $d['nama_sekolah']; ?></option>
 						<?php endforeach; ?>
 					</select>
 					
 							<span class="error kodelurah text-red"></span>
 						</div>
-						<div class="form-group">
+<!-- 						<div class="form-group">
 							<select class="form-control namasekolah" name="namasekolah">
 						<option value="">-- Pilih Nama Sekolah --</option>
 						<?php foreach ($dsekolah as $d) : ?>
@@ -38,7 +38,7 @@
 						<?php endforeach; ?>
 					</select>
 							<span class="error namasekolah text-red"></span>
-						</div>
+						</div> -->
 					</div>
 				</hr>
 			</div>
@@ -64,20 +64,20 @@
                     	// alert("Bisa");
                     }
                 });
- 	$(document).on('change', '.namasekolah', function(e) {
- 		let kode= "&a=" +$('.kodesekolah').val()+"&b=" +$('.namasekolah').val();
-	          $.ajax({
-                    url: '<?= site_url('master/Lapgurusekolah/tabel_kode')  ?>',
-                    type: "post",
-                    data: kode,
-                    cache: false,
-                    success: function(response) {
-                    	$('.tampil_tabel').html('');
-                    	$('.tampil_tabel').html(response);
-                    }
-                });
+ // 	$(document).on('change', '.namasekolah', function(e) {
+ // 		let kode= "&a=" +$('.kodesekolah').val()+"&b=" +$('.namasekolah').val();
+	//           $.ajax({
+ //                    url: '<?= site_url('master/Lapgurusekolah/tabel_kode')  ?>',
+ //                    type: "post",
+ //                    data: kode,
+ //                    cache: false,
+ //                    success: function(response) {
+ //                    	$('.tampil_tabel').html('');
+ //                    	$('.tampil_tabel').html(response);
+ //                    }
+ //                });
 
-	});
+	// });
 	   	$(document).on('change', '.kodesekolah', function(e) {
  		let kode= "&a=" +$('.kodesekolah').val()+"&b=" +$('.namasekolah').val();
 	          $.ajax({
@@ -86,7 +86,6 @@
                     data: kode,
                     cache: false,
                     success: function(response) {
-                    			alert("Kode Sekolah harus dipilih !");
                     	
                     	$('.tampil_tabel').html('');
                     	$('.tampil_tabel').html(response);
@@ -95,7 +94,7 @@
 
 	});
 	   		$(document).on('click', '.cetak', function(e) {
- 		let kode= "/" +$('.kodesekolah').val()+"/=" +$('.namasekolah').val();
+ 		let kode= "/" +$('.kodesekolah').val();
                     	    setTimeout(function() {
                                 window.location.href = '<?= site_url('master/Lapgurusekolah/cetak')?>'+kode;
                             }, 100);
