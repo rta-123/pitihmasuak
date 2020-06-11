@@ -24,12 +24,38 @@ class Lappangkatlurah extends CI_Controller
 		];
 		$this->template->display('master/Lappangkatlurah/index', $data);//panggil dari view
 	}
-
-	public function cetak()
+	public function tabel()
 	{
-		$data = [
-			'data'  => $this->Mlappangkatlurah->tampildata()
-			
+		
+		$data=[
+			'data'  => $this->Mlappangkatlurah->tampildata(),
+			'dgolongan'=>$this->Mgolongan->getall(),
+			'dlurah'=>$this->Mkelurahan->getall()
+		];
+		$this->load->view('master/Lappangkatlurah/tabel', $data);
+		
+	}
+	public function tabel_kode()
+	{
+		 $a = $this->input->post('a');
+		  $b = $this->input->post('b');
+		$data=[
+			'data'  => $this->Mlappangkatlurah->tampildata_kode($a,$b),
+			'dgolongan'=>$this->Mgolongan->getall(),
+			'dlurah'=>$this->Mkelurahan->getall()
+		];
+		$this->load->view('master/Lappangkatlurah/tabel', $data);
+
+	}
+
+public function cetak()
+	{
+		$a = $this->uri->segment(4);
+		$b =$this->uri->segment(5);
+		$data=[
+			'data'  => $this->Mlappangkatlurah->tampildata_kode($a,$b),
+			'dgolongan'=>$this->Mgolongan->getall(),
+			'dlurah'=>$this->Mkelurahan->getall()
 		];
 		$this->load->view('master/Lappangkatlurah/cetak',$data);
 

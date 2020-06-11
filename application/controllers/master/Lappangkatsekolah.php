@@ -24,16 +24,40 @@ class Lappangkatsekolah extends CI_Controller
 		];
 		$this->template->display('master/lappangkatsekolah/index', $data);//panggil dari view
 	}
-
-	public function cetak()
+public function tabel_kode()
 	{
-		$data = [
-			'data'  => $this->Mlappangkatsekolah->tampildata()
-			
+		$a = $this->input->post('a');
+		$b = $this->input->post('b');
+		$data=[
+			'data'  => $this->Mlappangkatsekolah->tampildata_kode($a,$b),
+			'dgolongan'=>$this->Mgolongan->getall(),
+			'dsikola'=>$this->Msekolah->getall()
+		];
+		$this->load->view('master/lappangkatsekolah/tabel', $data);
+
+	}
+public function tabel()
+	{
+		
+		$data=[
+			'data'  => $this->Mlappangkatsekolah->tampildata(),
+			'dgolongan'=>$this->Mgolongan->getall(),
+			'dsikola'=>$this->Msekolah->getall()
+		];
+		$this->load->view('master/lappangkatsekolah/tabel', $data);
+		
+	}
+public function cetak()
+	{
+		$a = $this->uri->segment(4);
+		$b =$this->uri->segment(5);
+		$data=[
+			'data'  => $this->Mlappangkatsekolah->tampildata_kode($a,$b),
+			'dgolongan'=>$this->Mgolongan->getall(),
+			'dsikola'=>$this->Msekolah->getall()
 		];
 		$this->load->view('master/lappangkatsekolah/cetak',$data);
 
 	}
-	
 	
 }

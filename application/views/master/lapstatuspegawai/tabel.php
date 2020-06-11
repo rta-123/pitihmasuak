@@ -4,9 +4,11 @@
 							<th class="text-center">No.</th>
 							<th>NIP Guru</th>
 							<th>Nama Guru</th>
-				<!-- 			<th>Kode Golongan</th>
-							<th>Pangkat</th>
-							<th>Golongan</th> -->
+							<!-- <th>Kode Kepegawaian</th> -->
+					<!-- 		<th>Status Kepegawaian</th> -->
+							<th>No SK</th>
+							<th>Nama Diklat</th>
+							<th>Tahun Diklat</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -16,9 +18,11 @@
 								<td class="text-center" width="40px"><?= $no . '.'; ?></td>
 								<td><?= $d['nip_guru'] ?></td>
 								<td><?= $d['nama_guru'] ?></td>
-						<!-- 		<td><?= $d['kode_golongan'] ?></td>
-								<td><?= $d['pangkat'] ?></td>
-								<td><?= $d['golongan'] ?></td> -->
+								<!-- <td><?= $d['kode_pegawai'] ?></td> -->
+								<!-- <td><?= $d['status_pegawai'] ?></td> -->
+								<td><?= $d['no_sk_guru'] ?></td>
+								<td><?= $d['nama_diklat_guru'] ?></td>
+								<td><?= $d['thn_diklat_guru'] ?></td>
 								
 									
 								</td>
@@ -28,5 +32,6 @@
 						
 					</tbody>
 					<tfoot>
+						
 					</tfoot>
 				</table>

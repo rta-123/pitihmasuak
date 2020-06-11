@@ -22,7 +22,7 @@
 					</div>
 					<div class="col-lg-3 col-xs-6">
     					<div class="form-group">
-							<select class="form-control" name="kodegol">
+							<select class="form-control kode_lurah" name="kode_lurah">
 						<option value="">-- Pilih Kode Kelurahan --</option>
 						<?php foreach ($dlurah as $d) : ?>
 							<option value="<?= $d['kode_lurah']; ?>"><?=$d['kode_lurah']; ?></option>
@@ -31,7 +31,7 @@
 						</div>
 
 						<div class="form-group">
-							<select class="form-control" name="kodegol">
+							<select class="form-control kode_golongan" name="kode_golongan">
 						<option value="">-- Pilih Pangkat --</option>
 						<?php foreach ($dgolongan as $d) : ?>
 							<option value="<?= $d['kode_golongan']; ?>"><?=$d['pangkat']; ?></option>
@@ -43,38 +43,8 @@
 			</div>
 			<div class="box-body table-responsive">
 				<?= $this->session->flashdata('pesan'); ?>
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th class="text-center">No.</th>
-							<th>NIP Guru</th>
-							<th>Nama Guru</th>
-							<th>Kode Golongan</th>
-							<th>Pangkat</th>
-							<th>Golongan</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php $no = 1;
-						foreach ($data as $d) { ?>
-							<tr>
-								<td class="text-center" width="40px"><?= $no . '.'; ?></td>
-								<td><?= $d['nip_guru'] ?></td>
-								<td><?= $d['nama_guru'] ?></td>
-								<td><?= $d['kode_golongan'] ?></td>
-								<td><?= $d['pangkat'] ?></td>
-								<td><?= $d['golongan'] ?></td>
-								
-									
-								</td>
-							</tr>
-						<?php $no++;
-						} ?>
-						
-					</tbody>
-					<tfoot>
-					</tfoot>
-				</table>
+				<div  class="tampil_tabel">cssc</div>
+
 			</div>
 		</div>
 	</div>
@@ -82,3 +52,57 @@
 
 <div id="tampil_modal"></div>
 
+
+<script type="text/javascript">
+	$(document).ready( function(e) {
+	$.ajax({
+                    url: '<?= site_url('master/Lappangkatlurah/tabel')  ?>',
+                    type: "post",
+                    cache: false,
+                    success: function(response) {
+                    	$('.tampil_tabel').html(response);
+                    	// alert("Bisa");
+                    }
+                });
+
+	   	$(document).on('change', '.kode_lurah', function(e) {
+ 		let kode= "&a=" +$('.kode_lurah').val()+"&b=" +$('.kode_golongan').val();
+	          $.ajax({
+                    url: '<?= site_url('master/Lappangkatlurah/tabel_kode')  ?>',
+                    type: "post",
+                    data: kode,
+                    cache: false,
+                    success: function(response) {
+                    	// alert("Golongan harus dipilih");
+                    	$('.tampil_tabel').html('');
+                    	$('.tampil_tabel').html(response);
+                    }
+                });
+
+	});
+	   		   	$(document).on('change', '.kode_golongan', function(e) {
+ 		let kode= "&a=" +$('.kode_lurah').val()+"&b=" +$('.kode_golongan').val();
+	          $.ajax({
+                    url: '<?= site_url('master/Lappangkatlurah/tabel_kode')  ?>',
+                    type: "post",
+                    data: kode,
+                    cache: false,
+                    success: function(response) {
+                    	// alert("Golongan harus dipilih");
+                    	$('.tampil_tabel').html('');
+                    	$('.tampil_tabel').html(response);
+                    }
+                });
+
+
+	});
+	   		$(document).on('click', '.cetak', function(e) {
+ 		let kode= "/" +$('.kode_sekolah').val()+"/" +$('.kode_golongan').val();
+                    	    setTimeout(function() {
+                                window.location.href = '<?= site_url('master/Lappangkatsekolah/cetak')?>'+kode;
+                            }, 100);
+
+	});
+	});
+
+</script>

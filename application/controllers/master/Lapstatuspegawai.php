@@ -23,15 +23,31 @@ class Lapstatuspegawai extends CI_Controller
 		$this->template->display('master/lapstatuspegawai/index', $data);//panggil dari view
 	}
 
-	public function cetak()
+public function tabel_kode()
 	{
-		$data = [
+		$a = $this->input->post('a');
+		$data=[
+			'data'  => $this->Mlapstatuspegawai->tampildata_kode($a)
+		];
+		$this->load->view('master/lapstatuspegawai/tabel', $data);
+
+	}
+public function tabel()
+	{
+		
+		$data=[
 			'data'  => $this->Mlapstatuspegawai->tampildata()
-			
+		];
+		$this->load->view('master/lapstatuspegawai/tabel', $data);
+		
+	}
+public function cetak()
+	{
+		$a = $this->uri->segment(4);
+		$data=[
+			'data'  => $this->Mlapstatuspegawai->tampildata_kode($a),
 		];
 		$this->load->view('master/lapstatuspegawai/cetak',$data);
 
-	}
-	
-	
+	}	
 }

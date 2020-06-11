@@ -12,7 +12,7 @@
  </style>
 </head>
 <body onload="window.print()">
-	<h1 align="center">Laporan Data Kepegawaian
+	<h1 align="center">Laporan Data Status Kepegawaian
 		 <br>Kecamatan Padang Timur</h1>
 	<h3 align="center">Kota Padang</h3>
 <table align="center" width="60%" border="1">
@@ -21,10 +21,11 @@
 			<th  width="5%">No.</th>
 			<th width="20%">NIP Guru</th>
 			<th width="20%">Nama Guru</th>
-			<th width="15%">Kode Kepegawaian</th>
+			<!-- <th width="15%">Kode Kepegawaian</th> -->
 			<th width="15%">Status Kepegawaian</th>
-			<th width="20%">Tanggal Diangkat</th>
 			<th width="15%">No SK</th>
+			<th width="20%">Nama Diklat</th>
+			<th width="20%">Tahun Diklat</th>
 			
 			
 		</tr>
@@ -36,11 +37,12 @@
 								<td width="40px"><?= $no . '.'; ?></td>
 								<td><?= $d['nip_guru'] ?></td>
 								<td><?= $d['nama_guru'] ?></td>
-								<td><?= $d['kode_pegawai'] ?></td>
+								<!-- <td><?= $d['kode_pegawai'] ?></td> -->
 								<td><?= $d['status_pegawai'] ?></td>
-								<td><?= $d['tgl_diangkat_guru'] ?></td>
-								<td><?= $d['no_sk_guru'] ?></td>								
-									
+								<td><?= $d['no_sk_guru'] ?></td>
+								<td><?= $d['nama_diklat_guru'] ?></td>
+								<td><?= $d['thn_diklat_guru'] ?></td>
+								
 								</td>
 							</tr>
 						<?php $no++;
